@@ -12,6 +12,23 @@ class Station():
     def getNumOfSats(self): return self.__num_of_sats
     def getMaintenance(self): return self.__maintenance
 
+    #setters
+    def setName(self, newName) -> None:  self.__name = newName
+    def setIsDowntime(self, newDownTime) -> None:  self.__is_downtime = newDownTime
+    def setNumOfSats(self, newNumOfSats) -> None:  self.__num_of_sats = newNumOfSats
+    def setMaintenance(self, newMaintenance) -> None:  self.__maintenance = newMaintenance
+
+
+
+    def switchingDowntime(self):
+        if self.getIsDowntime:
+            self.setIsDowntime(False)
+        else:
+            self.setIsDowntime(True)
+
+
+
+
 
 def main() ->None:
 
@@ -19,15 +36,15 @@ def main() ->None:
     stationA = Station('Station A', False, 0, False)
     stationB = Station('Station B', False, 5, False)
 
-    #testing
-    try:
-        print(stationA.num_of_sats)
-        print(stationB.num_of_sats)
-    except:
-        print("Values succesfully obfuscated")
+    #testing - all OK
 
-    print(stationA.getNumOfSats())
-    print(stationB.getNumOfSats())
+    print(stationA.getIsDowntime(), stationA.getName())
+    stationA.setIsDowntime(True)
+    stationA.setName('Station C')
+    print(stationA.getIsDowntime(), stationA.getName())
+    stationA.switchingDowntime()
+    print(stationA.getIsDowntime())
+
 
 
 
