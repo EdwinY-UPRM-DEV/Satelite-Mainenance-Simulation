@@ -19,14 +19,26 @@ class Station():
     def setMaintenance(self, newMaintenance) -> None:  self.__maintenance = newMaintenance
 
 
-
+    #Custom Functions
     def switchingDowntime(self):
         if self.getIsDowntime:
             self.setIsDowntime(False)
         else:
             self.setIsDowntime(True)
 
+    def increaseNumOfSats(self, s=None):
+        if not s:
+            self.setNumOfSats(self.getNumOfSats() + 1)
+        else:
+            #abs to remove accidental flipping of signs
+            self.setNumOfSats(self.getNumOfSats() + abs(s))
 
+    def decreaseNumOfSats(self, s=None):
+        if not s:
+            self.setNumOfSats(0 if (self.getNumOfSats() - 1) < 0 else self.getNumOfSats() - 1)
+        else:
+            #abs to remove accidental flipping of signs
+            self.setNumOfSats(0 if (self.getNumOfSats() - abs(s)) < 0 else self.getNumOfSats() - abs(s))
 
 
 
@@ -37,13 +49,24 @@ def main() ->None:
     stationB = Station('Station B', False, 5, False)
 
     #testing - all OK
+    print("Before increase: ", stationA.getNumOfSats())
+    stationA.increaseNumOfSats()
 
-    print(stationA.getIsDowntime(), stationA.getName())
-    stationA.setIsDowntime(True)
-    stationA.setName('Station C')
-    print(stationA.getIsDowntime(), stationA.getName())
-    stationA.switchingDowntime()
-    print(stationA.getIsDowntime())
+    print("Normal Increase: ",stationA.getNumOfSats())
+    stationA.increaseNumOfSats(5)
+    print("Increase by 5: ",stationA.getNumOfSats())
+
+    stationA.decreaseNumOfSats()
+    print("Decrease normal: ", stationA.getNumOfSats())
+    stationA.decreaseNumOfSats(2)
+    print("Decrease by 2: ",stationA.getNumOfSats())
+    stationA.decreaseNumOfSats(20)
+    print("Absurd decrease: ", stationA.getNumOfSats())
+
+    
+
+
+
 
 
 
