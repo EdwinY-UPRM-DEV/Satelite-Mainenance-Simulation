@@ -1,6 +1,6 @@
 #Station class for scalability
 class Station():
-    def __init__(self, name, is_downtime, num_of_sats, maintenance):
+    def __init__(self, name: str, is_downtime: bool, num_of_sats: int, maintenance: bool):
         self.__name = name
         self.__is_downtime = is_downtime
         self.__num_of_sats = num_of_sats
@@ -25,6 +25,12 @@ class Station():
             self.setIsDowntime(False)
         else:
             self.setIsDowntime(True)
+
+    def switchingMaintenance(self):
+        if self.getMaintenance():
+            self.setMaintenance(False)
+        else:
+            self.setMaintenance(True)
 
     def increaseNumOfSats(self, s=None):
         if not s:
