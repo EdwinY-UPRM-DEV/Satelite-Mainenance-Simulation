@@ -46,32 +46,25 @@ class Station():
             #abs to remove accidental flipping of signs
             self.setNumOfSats(0 if (self.getNumOfSats() - abs(s)) < 0 else self.getNumOfSats() - abs(s))
 
+    def changeName(self, newName):
+        if type(newName) == str:
+            self.setName(newName)
+        else:
+            raise "Type must be string"
+
 
 
 def main() ->None:
 
-    #initialization of stations
-    stationA = Station('Station A', False, 0, False)
-    stationB = Station('Station B', False, 5, False)
+    stationA = Station("StationA", False, 0, False)
 
-    #testing - all OK
-    print("Before increase: ", stationA.getNumOfSats())
-    stationA.increaseNumOfSats()
-
-    print("Normal Increase: ",stationA.getNumOfSats())
-    stationA.increaseNumOfSats(5)
-    print("Increase by 5: ",stationA.getNumOfSats())
-
-    stationA.decreaseNumOfSats()
-    print("Decrease normal: ", stationA.getNumOfSats())
-    stationA.decreaseNumOfSats(2)
-    print("Decrease by 2: ",stationA.getNumOfSats())
-    stationA.decreaseNumOfSats(20)
-    print("Absurd decrease: ", stationA.getNumOfSats())
-
-    
-
-
+    print(stationA.getName())
+    stationA.changeName("Hello World")
+    print(stationA.getName())
+    try: 
+        stationA.changeName(0)
+    except:
+        print("Exception caught!")
 
 
 
