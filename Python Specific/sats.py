@@ -1,6 +1,6 @@
 #Station class for scalability
 class Station():
-    def __init__(self, name: str, is_downtime: bool, num_of_sats: int, maintenance: bool):
+    def __init__(self, name: str, is_downtime: bool = False, num_of_sats: int = 0, maintenance: bool = False):
         self.__name = name
         self.__is_downtime = is_downtime
         self.__num_of_sats = num_of_sats
@@ -52,20 +52,19 @@ class Station():
         else:
             raise "Type must be string"
 
+    def __str__(self):
+        return self.getName()
+    def __repr__(self):
+        return f"Station({self.getName()}, {self.getIsDowntime()}, {self.getNumOfSats()}, {self.getMaintenance()})"
+
 
 
 def main() ->None:
 
-    stationA = Station("StationA", False, 0, False)
-
-    print(stationA.getName())
-    stationA.changeName("Hello World")
-    print(stationA.getName())
-    try: 
-        stationA.changeName(0)
-    except:
-        print("Exception caught!")
-
+   
+    stationX = Station("Station X")
+    print(stationX)
+    print(repr(stationX))
 
 
 
