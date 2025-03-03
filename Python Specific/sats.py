@@ -57,14 +57,31 @@ class Station():
     def __repr__(self):
         return f"Station({self.getName()}, {self.getIsDowntime()}, {self.getNumOfSats()}, {self.getMaintenance()})"
 
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return (
+            self.getName() == other.getName() and
+            self.getIsDowntime() == other.getIsDowntime() and
+            self.getNumOfSats() == other.getNumOfSats() and
+            self.getMaintenance() == other.getMaintenance()
+    )
+
+
 
 
 def main() ->None:
 
-   
+    #Test Cases
     stationX = Station("Station X")
     print(stationX)
     print(repr(stationX))
+    stationY = Station("Station X", True)
+    print(stationY)
+    print(repr(stationY))
+
+    print(stationX == stationY)
+
 
 
 
