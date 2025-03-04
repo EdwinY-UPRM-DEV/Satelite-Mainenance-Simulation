@@ -1,3 +1,15 @@
+#Satellite class
+class Satellite():
+    def __init__(self, priority: int, upload_time: float, available: bool, busy_until: float, busy_interval: float, current_sat: str):
+        self.__priority = priority
+        self.__upload_time = upload_time
+        self.__available = available
+        self.__busy_until = busy_until
+        self.__busy_interval = busy_interval
+        self.__current_sat = current_sat
+
+        
+
 #Station class for scalability
 class Station():
     def __init__(self, name: str, is_downtime: bool = False, num_of_sats: int = 0, maintenance: bool = False):
@@ -73,14 +85,7 @@ class Station():
 def main() ->None:
 
     #Test Cases
-    stationX = Station("Station X")
-    print(stationX)
-    print(repr(stationX))
-    stationY = Station("Station X", True)
-    print(stationY)
-    print(repr(stationY))
-
-    print(stationX == stationY)
+    Alpha = Satellite(1, 0.50, True, None, None, None)
 
 
 
